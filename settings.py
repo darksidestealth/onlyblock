@@ -42,7 +42,7 @@ DATABASES = {
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = "US/Eastern"
+TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -96,8 +96,9 @@ SECRET_KEY = "c0pxi&_r+l4x^&d1wrofaqas3!23t@45y=*^5^2$q074i077gt"
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = [
-    "django.template.loaders.filesystem.load_template_source",
-    "django.template.loaders.app_directories.load_template_source",
+    "django.template.loaders.filesystem.Loader",
+	'django.template.loaders.app_directories.Loader'
+    #"django.template.loaders.app_directories.load_template_source",
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -126,6 +127,9 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
+	"django.core.context_processors.static",
+	
+	'zinnia.context_processors.version',
     
     "staticfiles.context_processors.static",
     
@@ -133,7 +137,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     
     "pinax.apps.account.context_processors.account",
     
-    "notification.context_processors.notification",
+    #"notification.context_processors.notification",
     "announcements.context_processors.site_wide_announcements",
 ]
 
@@ -146,6 +150,9 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.humanize",
+	"zinnia",
+	"tagging",
+	"django.contrib.comments",
     
     "pinax.templatetags",
     
@@ -165,6 +172,7 @@ INSTALLED_APPS = [
     "pagination",
     "idios",
     "metron",
+	"south",
     
     # Pinax
     "pinax.apps.account",
